@@ -1,10 +1,23 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+// main.jsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { MockGameProvider, HeaderFromContext, Board } from '@hodmanliban/gomoku-components';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+function App() {
+  return (
+    <MockGameProvider>
+      <div className="game-container">
+        <HeaderFromContext />
+        <Board />
+      </div>
+    </MockGameProvider>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <App />
-  </StrictMode>,
+  </React.StrictMode>,
 )
+
+export default App;
