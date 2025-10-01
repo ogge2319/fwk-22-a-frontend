@@ -12,7 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@hodmanliban/gomoku-components": "^0.1.6",
+    "@hodmanliban/gomoku-components": "^0.1.8",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.3"
