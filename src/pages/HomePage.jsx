@@ -6,6 +6,7 @@ function HomePage() {
     const navigate = useNavigate();
 
     const handleStartGame = () => {
+        console.log("handleStartGame called!"); // Debug log
         navigate('/game');
     };
 

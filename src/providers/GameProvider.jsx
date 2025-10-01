@@ -6,8 +6,8 @@ const SIZE = 15;
 const WIN = 5;
 
 function emptyBoard() {
-    const board = Array.from({ length: SIZE }, () => Array(SIZE).fill(""));
-    console.log("Created empty board:", board.length, "x", board[0]?.length);
+    const board = Array(225).fill(null); // 15x15 = 225, 1D array
+    console.log("Created empty board:", board.length, "cells");
     return board;
 }
 
@@ -15,31 +15,36 @@ function inBounds(r, c) {
     return r >= 0 && r < SIZE && c >= 0 && c < SIZE;
 }
 
-function checkWin(board, r, c) {
-    const player = board[r][c];
+function checkWin(board, index) {
+    const player = board[index];
     if (!player) return false;
 
+    const row = Math.floor(index / SIZE);
+    const col = index % SIZE;
+
     const directions = [
-        [0, 1],
-        [1, 0],
-        [1, 1],
-        [1, -1],
+        [0, 1],  // horizontal
+        [1, 0],  // vertical  
+        [1, 1],  // diagonal \
+        [1, -1], // diagonal /
     ];
 
     for (const [dr, dc] of directions) {
         let count = 1;
 
+        // Check in positive direction
         for (let i = 1; i < WIN; i++) {
-            const nr = r + dr * i;
-            const nc = c + dc * i;
-            if (!inBounds(nr, nc) || board[nr][nc] !== player) break;
+            const nr = row + dr * i;
+            const nc = col + dc * i;
+            if (!inBounds(nr, nc) || board[nr * SIZE + nc] !== player) break;
             count++;
         }
 
+        // Check in negative direction  
         for (let i = 1; i < WIN; i++) {
-            const nr = r - dr * i;
-            const nc = c - dc * i;
-            if (!inBounds(nr, nc) || board[nr][nc] !== player) break;
+            const nr = row - dr * i;
+            const nc = col - dc * i;
+            if (!inBounds(nr, nc) || board[nr * SIZE + nc] !== player) break;
             count++;
         }
 
@@ -56,18 +61,14 @@ export function GameProvider({ children }) {
     const [scoreX, setScoreX] = useState(0);
     const [scoreO, setScoreO] = useState(0);
 
-    const handleCellClick = (r, c) => {
-        if (board[r][c] || winner) return;
+    const handleCellClick = (index) => {
+        if (board[index] || winner) return;
 
-        const newBoard = board.map((row, rowIndex) =>
-            row.map((cell, colIndex) =>
-                rowIndex === r && colIndex === c ? currentPlayer : cell
-            )
-        );
-
+        const newBoard = [...board];
+        newBoard[index] = currentPlayer;
         setBoard(newBoard);
 
-        if (checkWin(newBoard, r, c)) {
+        if (checkWin(newBoard, index)) {
             setWinner(currentPlayer);
             if (currentPlayer === "X") {
                 setScoreX(prev => prev + 1);
@@ -94,8 +95,8 @@ export function GameProvider({ children }) {
     };
 
     const status = winner
-        ? `Spelare ${winner} vinner!`
-        : `Spelare ${currentPlayer}s tur`;
+        ? `${winner === 'X' ? 'Black' : 'White'} wins!`
+        : `${currentPlayer === 'X' ? 'Black' : 'White'}s turn`;
 
     return (
         <GameContext.Provider

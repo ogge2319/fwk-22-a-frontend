@@ -1,0 +1,53 @@
+/* GamePage CSS Module med riktigt centrerad layout */
+
+.gameContainer {
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: transparent;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.leftSpacer {
+    flex: 0 0 200px;
+}
+
+.centerColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding-top: 100px;
+}
+
+.scoreboardRight {
+    flex: 0 0 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100vh;
+    padding-top: 120;
+}
+
+/* Överskrid komponenter med högre specificitet */
+.gameContainer :global([class*="board"]) {
+    margin: 0;
+    padding: 20px;
+}
+
+.gameContainer :global([class*="header"]) {
+    margin: 0;
+    width: 100%;
+    max-width: 400px;
+}
+
+.gameContainer :global([class*="scoreboard"]) {
+    margin: 0;
+    width: 100%;
+    max-width: 200px;
+}
