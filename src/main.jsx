@@ -1,23 +1,15 @@
 // main.jsx
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { MockGameProvider, HeaderFromContext, Board } from '@hodmanliban/gomoku-components';
-
-function App() {
-  return (
-    <MockGameProvider>
-      <div className="game-container">
-        <HeaderFromContext />
-        <Board />
-      </div>
-    </MockGameProvider>
-  );
-}
+import { BrowserRouter } from 'react-router-dom'
+import App from './App.jsx'
+import './index.css'
+import './gomoku-styles.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
 )
-
-export default App;
