@@ -1,42 +1,67 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* ==== Reset & root layout ==== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: #0b1020; /* fallback om ingen komponent sätter bakgrund */
+  color: #e5e7eb;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* ==== App container (valfritt) ==== */
+.app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.card {
-  padding: 2em;
+/* ==== Utilities ==== */
+.fullbleed {
+  min-height: 100dvh;  /* bra på mobil, tar hänsyn till browser UI */
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
 }
 
-.read-the-docs {
-  color: #888;
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.maxw {
+  max-width: 1200px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* Knapp-basis om du vill använda globalt (komponent kan såklart ha egna) */
+.button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+.button:hover { background: #1d4ed8; }
+.button:active { transform: translateY(1px); }
+
+/* ---- Ta bort Vite-demo-styles ---- */
+/* #root { max-width: 1280px; margin: 0 auto; padding: 2rem; text-align: center; }  */
+/* .logo, .card, .read-the-docs, @keyframes logo-spin ...  (raderade) */
