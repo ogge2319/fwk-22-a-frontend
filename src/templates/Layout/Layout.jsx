@@ -11,7 +11,7 @@ function Layout({ children }) {
             <header className="layout-header">
                 {isGamePage && (
                     <nav>
-                        <Link to="/">Hem</Link>
+                        <Link to="/">Home</Link>
                     </nav>
                 )}
             </header>
