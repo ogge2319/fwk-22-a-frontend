@@ -1,14 +1,10 @@
-// src/providers/GameProvider.jsx
 import React, { createContext, useContext, useState } from "react";
 
-// Använd samma context-namn som MockGameProvider förväntar sig
 const GameContext = createContext();
 
-// Konstanter
 const SIZE = 15;
 const WIN = 5;
 
-// Hjälpfunktioner
 function emptyBoard() {
     const board = Array.from({ length: SIZE }, () => Array(SIZE).fill(""));
     console.log("Created empty board:", board.length, "x", board[0]?.length);
@@ -24,16 +20,15 @@ function checkWin(board, r, c) {
     if (!player) return false;
 
     const directions = [
-        [0, 1],   // horisontell
-        [1, 0],   // vertikal
-        [1, 1],   // diagonal \
-        [1, -1],  // diagonal /
+        [0, 1],
+        [1, 0],
+        [1, 1],
+        [1, -1],
     ];
 
     for (const [dr, dc] of directions) {
         let count = 1;
 
-        // Räkna åt ena hållet
         for (let i = 1; i < WIN; i++) {
             const nr = r + dr * i;
             const nc = c + dc * i;
@@ -41,7 +36,6 @@ function checkWin(board, r, c) {
             count++;
         }
 
-        // Räkna åt andra hållet
         for (let i = 1; i < WIN; i++) {
             const nr = r - dr * i;
             const nc = c - dc * i;
