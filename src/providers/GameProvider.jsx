@@ -6,7 +6,7 @@ const SIZE = 15;
 const WIN = 5;
 
 function emptyBoard() {
-    const board = Array(225).fill(null); // 15x15 = 225, 1D array
+    const board = Array(225).fill(null);
     console.log("Created empty board:", board.length, "cells");
     return board;
 }
@@ -23,16 +23,16 @@ function checkWin(board, index) {
     const col = index % SIZE;
 
     const directions = [
-        [0, 1],  // horizontal
-        [1, 0],  // vertical  
-        [1, 1],  // diagonal \
-        [1, -1], // diagonal /
+        [0, 1],
+        [1, 0],
+        [1, 1],
+        [1, -1],
     ];
 
     for (const [dr, dc] of directions) {
         let count = 1;
 
-        // Check in positive direction
+
         for (let i = 1; i < WIN; i++) {
             const nr = row + dr * i;
             const nc = col + dc * i;
@@ -40,7 +40,7 @@ function checkWin(board, index) {
             count++;
         }
 
-        // Check in negative direction  
+
         for (let i = 1; i < WIN; i++) {
             const nr = row - dr * i;
             const nc = col - dc * i;
