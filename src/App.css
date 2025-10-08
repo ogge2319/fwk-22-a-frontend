@@ -1,4 +1,4 @@
-/* ==== Reset & root layout ==== */
+
 *,
 *::before,
 *::after {
@@ -16,20 +16,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  background: #0b1020; /* fallback om ingen komponent sätter bakgrund */
+  background: #0b1020; 
   color: #e5e7eb;
 }
 
-/* ==== App container (valfritt) ==== */
+
 .app {
   min-height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* ==== Utilities ==== */
+
 .fullbleed {
-  min-height: 100dvh;  /* bra på mobil, tar hänsyn till browser UI */
+  min-height: 100dvh;  
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -48,7 +48,6 @@ body {
   padding-inline: 1rem;
 }
 
-/* Knapp-basis om du vill använda globalt (komponent kan såklart ha egna) */
 .button {
   border: none;
   border-radius: 12px;
@@ -61,7 +60,3 @@ body {
 }
 .button:hover { background: #1d4ed8; }
 .button:active { transform: translateY(1px); }
-
-/* ---- Ta bort Vite-demo-styles ---- */
-/* #root { max-width: 1280px; margin: 0 auto; padding: 2rem; text-align: center; }  */
-/* .logo, .card, .read-the-docs, @keyframes logo-spin ...  (raderade) */

@@ -1,4 +1,4 @@
-/* ==== Global reset ==== */
+
 *,
 *::before,
 *::after {
@@ -20,11 +20,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 
-  background-color: #0b1020; /* fallback om ingen komponent sätter bakgrund */
+  background-color: #0b1020; 
   color: #e5e7eb;
 }
 
-/* ==== Links ==== */
 a {
   font-weight: 500;
   color: #3b82f6;
@@ -34,7 +33,7 @@ a:hover {
   color: #2563eb;
 }
 
-/* ==== Buttons ==== */
+
 button {
   font-family: inherit;
   font-size: 1rem;
